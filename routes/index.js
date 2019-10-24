@@ -25,9 +25,6 @@ router.post('/deposit', async function(req, res, next) {
       // Send result on client
     res.end(util.inspect({fields: fields, files: files}));
     
-    console.log(files.contents)
-
-
     let filename = fields.filename
     let contents = files.contents
 
@@ -45,7 +42,7 @@ router.post('/deposit', async function(req, res, next) {
       await client.execute(query, params)
     } 
     catch (error) {
-      console.log("cassandra sucks")
+      console.log("error")
     }
 
     res.status(200)
