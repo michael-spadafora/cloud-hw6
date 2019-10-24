@@ -18,13 +18,12 @@ router.post('/deposit', async function(req, res, next) {
     if (err)
       console.log(err)
     // Copy file from temporary place
-    // var fs = require('fs');
+    var fs = require('fs');
     // fs.rename(file.path, <targetPath>, function (err) { ... }); 
       
       
 
       // Send result on client
-    res.end(util.inspect({fields: fields, files: files}));
     
     let filename = fields.filename
     let contents = files.contents
