@@ -29,12 +29,6 @@ router.post('/deposit', async function(req, res, next) {
   }
 
   res.send(200)
-
-
-
-
-
-  res.render('index', { title: 'Express' });
 });
 
 router.get('/retrieve', function(req, res, next) {
