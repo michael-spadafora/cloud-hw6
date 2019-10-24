@@ -28,8 +28,6 @@ router.post('/deposit', async function(req, res, next) {
     let filename = fields.filename
     let contents = files.contents
 
-    const stream = fs.createReadStream(contents)
-    const blob = await streamToBlob(stream)
 
 
     const client = new cassandra.Client({ 
@@ -40,7 +38,7 @@ router.post('/deposit', async function(req, res, next) {
 
 
     let query = 'INSERT INTO imgs (filename, contents)'
-    let params = [filename, blob]
+    let params = [filename, contents]
 
     try {
       await client.execute(query, params)
