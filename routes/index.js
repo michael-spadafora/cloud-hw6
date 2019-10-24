@@ -21,7 +21,12 @@ router.post('/deposit', async function(req, res, next) {
   let query = 'INSERT INTO imgs (filename, contents)'
   let params = [filename, contents]
 
-  await client.execute(query, params)
+  try {
+    await client.execute(query, params)
+  } 
+  catch (error) {
+    console.log(error)
+  }
 
   res.send(200)
 
