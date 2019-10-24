@@ -9,6 +9,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/deposit', async function(req, res, next) {
   let filename = req.body.filename
+
+  console.log(req)
   console.log(filename)
   console.log(req.body)
 
