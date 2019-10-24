@@ -14,7 +14,8 @@ router.post('/deposit', async function(req, res, next) {
 
   const client = new cassandra.Client({ 
     contactPoints: ['127.0.0.1'], 
-    keyspace: 'hw6' 
+    keyspace: 'hw6',
+    localDataCenter: 'datacenter1'
   });
 
   let contents = req.files
