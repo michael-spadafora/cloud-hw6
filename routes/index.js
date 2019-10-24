@@ -29,7 +29,7 @@ router.post('/deposit', async function(req, res, next) {
 
 
     let filename = fields.filename
-    let contents = files
+    let contents = files.contents
 
     const client = new cassandra.Client({ 
       contactPoints: ['127.0.0.1'], 
