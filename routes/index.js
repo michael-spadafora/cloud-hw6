@@ -46,7 +46,7 @@ router.post('/deposit', async function(req, res, next) {
       await client.execute(query, params)
     } 
     catch (error) {
-      console.log(error)
+      console.log("cassandra sucks")
     }
 
     res.status(200)
