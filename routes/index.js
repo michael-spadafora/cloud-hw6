@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const cassandra = require('cassandra-driver');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -9,9 +10,22 @@ router.get('/', function(req, res, next) {
 router.post('/deposit', function(req, res, next) {
   let filename = req.body.filename
   console.log(filename)
+  console.log(req.body)
+  const client = new cassandra.Client({ 
+    keyspace: 'hw6' 
+  });
 
   let contents = req.files
-  
+
+  let query = 'INSERT INTO imgs (filename, contents)'
+  let params = [filename, contents]
+
+  client.execute(query, params).then(
+    res.send(200)
+  )
+
+
+
 
 
   res.render('index', { title: 'Express' });
