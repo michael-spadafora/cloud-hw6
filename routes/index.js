@@ -8,8 +8,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/deposit', function(req, res, next) {
   let filename = req.body.filename
-  let contents = req.body.contents
   console.log(filename)
+
+  let contents = req.files
+  
 
 
   res.render('index', { title: 'Express' });
