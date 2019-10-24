@@ -12,7 +12,7 @@ router.post('/deposit', async function(req, res, next) {
   console.log(filename)
   console.log(req.body)
   const client = new cassandra.Client({ 
-    contactPoints: ['h1'], 
+    contactPoints: ['127.0.0.1:9042'], 
     keyspace: 'hw6' 
   });
 
