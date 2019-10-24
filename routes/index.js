@@ -12,7 +12,7 @@ router.post('/deposit', async function(req, res, next) {
 
   var form = new formidable.IncomingForm();
 
-  form.parse(req, function(err, fields, files) {
+  form.parse(req, async function(err, fields, files) {
     if (err)
       console.log(err)
     // Copy file from temporary place
