@@ -20,7 +20,7 @@ router.post('/deposit', async function(req, res, next) {
 
   let contents = req.files
 
-  let query = 'INSERT INTO imgs (filename, contents);'
+  let query = 'INSERT INTO imgs (filename, contents)'
   let params = [filename, contents]
 
   try {
@@ -30,7 +30,7 @@ router.post('/deposit', async function(req, res, next) {
     console.log(error)
   }
 
-  res.send(200)
+  res.status(200)
 });
 
 router.get('/retrieve', function(req, res, next) {
