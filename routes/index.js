@@ -3,7 +3,8 @@ var router = express.Router();
 const cassandra = require('cassandra-driver');
 const formidable = require('formidable')
 var util = require('util');
-
+const streamToBlob = require('stream-to-blob')
+ 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
@@ -28,6 +29,10 @@ router.post('/deposit', async function(req, res, next) {
     let filename = fields.filename
     let contents = files.contents
 
+    const stream = fs.createReadStream(contents)
+    const blob = await streamToBlob(stream)
+
+
     const client = new cassandra.Client({ 
       contactPoints: ['127.0.0.1'], 
       keyspace: 'hw6',
@@ -36,7 +41,7 @@ router.post('/deposit', async function(req, res, next) {
 
 
     let query = 'INSERT INTO imgs (filename, contents)'
-    let params = [filename, contents]
+    let params = [filename, blob]
 
     try {
       await client.execute(query, params)
