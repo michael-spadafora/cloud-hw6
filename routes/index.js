@@ -25,11 +25,11 @@ router.post('/deposit', async function(req, res, next) {
       // Send result on client
     res.end(util.inspect({fields: fields, files: files}));
     
-    console.log(fields)
     console.log(files)
 
 
-    let filename = req.body.filename
+    let filename = fields.filename
+    let contents = files
 
     const client = new cassandra.Client({ 
       contactPoints: ['127.0.0.1'], 
