@@ -7,7 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/deposit', function(req, res, next) {
+router.post('/deposit', async function(req, res, next) {
   let filename = req.body.filename
   console.log(filename)
   console.log(req.body)
@@ -21,9 +21,9 @@ router.post('/deposit', function(req, res, next) {
   let query = 'INSERT INTO imgs (filename, contents)'
   let params = [filename, contents]
 
-  client.execute(query, params).then(
-    res.send(200)
-  )
+  await client.execute(query, params)
+
+  res.send(200)
 
 
 
